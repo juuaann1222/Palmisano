@@ -1,0 +1,57 @@
+﻿@model Palmisano.Estudiante
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Estudiante</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Carrera)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Carrera.Descripcion)
+        </dd>
+        <dd>
+            <img src="~/images/estudiantes/@Model.NombreFoto"
+                 class="rounded-circle   "
+                 height="85" with="45"
+                 asp-append-version="true" />
+        </dd>
+        <dt class="col-sm-2" >
+            @Html.DisplayNameFor(model => model.Localidad)
+        </dt>
+        
+        <dt class="col-sm-2" >
+            @Html.DisplayNameFor(model => model.Calle)
+        </dt>
+        
+    </dl>
+</div>
+
+<div style="text-align: center;">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Regresar a la Lista</a>
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Palmisano.EstudianteMateria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Indice Estudiante-Materia</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInscripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AñoCursado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estudiante.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materia.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInscripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AñoCursado)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

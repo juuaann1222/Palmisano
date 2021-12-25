@@ -1,0 +1,94 @@
+﻿@model Palmisano.ViewModel.EstudiantesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Indice de Estudiante</h1>
+
+<p>
+    <a asp-action="Create">Agregar Nuevo</a>
+</p>
+<form asp-action="Index" method="get">
+    <p>
+        Nombre: <input type="text" asp-for="textoBusqueda" />
+        Carera:
+        <select asp-for="CarreraId" asp-items="@Model.ListCarreras">
+            <option value="">Todos</option>
+        </select>
+
+        <input type="submit" value="Filtrar" name="boton" />
+    </p>
+    <br />
+
+
+</form>       
+<table class="table">
+    <thead> 
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiantes[0].Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiantes[0].Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiantes[0].Año)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiantes[0].Carrera)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiantes[0].NombreFoto)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.Estudiantes[0].Localidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estudiantes[0].Calle)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Estudiantes) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Año)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carrera.Descripcion)
+            </td>
+            <td>
+                <img src="~/images/estudiantes/@item.NombreFoto"
+                     class="rounded-circle   "
+                     height="85" with="45"
+                     asp-append-version="true" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calle)
+            </td>
+
+           
+            <td>
+
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+<partial name="_Paginador" for="@Model.Paginador" />
